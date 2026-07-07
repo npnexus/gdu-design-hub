@@ -1,0 +1,108 @@
+{% extends 'dash.html' %}
+
+{% block title %}Update Order{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+        <!-- Header -->
+        <div class="bg-indigo-600 px-8 py-6">
+            <h1 class="text-3xl font-bold text-white">
+                Update Order
+            </h1>
+            <p class="text-indigo-100 mt-2">
+                Modify your order details and submit the changes.
+            </p>
+        </div>
+
+        <!-- Form -->
+        <div class="p-6 md:p-8">
+
+            <form method="POST"
+                  enctype="multipart/form-data"
+                  class="space-y-6">
+
+                {% csrf_token %}
+
+                <!-- Non Field Errors -->
+                {% if form.non_field_errors %}
+                <div class="bg-red-50 border border-red-200 text-red-600 p-4 rounded-xl">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+
+                <!-- Order Field -->
+                {% if form.order %}
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Order Title
+                    </label>
+                    {{ form.order }}
+                    {% if form.order.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.order.errors.0 }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Reference Design -->
+                {% if form.reference_design %}
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Reference Design
+                    </label>
+
+                    <div class="border-2 border-dashed border-gray-300 rounded-2xl p-6 bg-gray-50">
+                        {{ form.reference_design }}
+                    </div>
+
+                    {% if form.reference_design.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.reference_design.errors.0 }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Content -->
+                {% if form.content %}
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Project Details
+                    </label>
+
+                    {{ form.content }}
+
+                    {% if form.content.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.content.errors.0 }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+
+                    <button type="submit"
+                            class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition duration-300 shadow-md">
+                        ✓ Update Order
+                    </button>
+
+                    <a href="{% url 'order_list' %}"
+                       class="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold transition">
+                        ← Back to Orders
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

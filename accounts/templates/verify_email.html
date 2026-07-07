@@ -1,0 +1,4 @@
+Hello {{ user.username }},
+Thank you for registering. Please verify your email address by clicking the button below.
+http://{{ domain }}{% url 'verify_email' uid token %}
+If you did not create an account, you can safely ignore this email.
