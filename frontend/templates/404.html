@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Page Not Found</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes float {
+            0%,100%{
+                transform: translateY(0px);
+            }
+            50%{
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes glow {
+            0%,100%{
+                text-shadow: 0 0 10px rgba(255,255,255,.2);
+            }
+            50%{
+                text-shadow: 0 0 30px rgba(59,130,246,.8);
+            }
+        }
+
+        @keyframes rotateSlow {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        .floating{
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .glow{
+            animation: glow 2s infinite;
+        }
+
+        .rotate{
+            animation: rotateSlow 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-black overflow-hidden">
+
+    <!-- Background Circles -->
+    <div class="absolute w-96 h-96 rounded-full border border-blue-500/20 rotate"></div>
+    <div class="absolute w-[500px] h-[500px] rounded-full border border-purple-500/20 rotate" style="animation-direction:reverse;"></div>
+
+    <div class="relative text-center px-6 z-10">
+
+        <div class="text-7xl mb-5 floating">
+            👨‍🚀
+        </div>
+
+        <h1 class="text-9xl md:text-[180px] font-black text-white glow">
+            404
+        </h1>
+
+        <h2 class="text-3xl font-bold text-white mt-3">
+            Lost in Space
+        </h2>
+
+        <p class="text-gray-300 mt-5 max-w-lg mx-auto">
+            Sorry! The page you're looking for has drifted into another galaxy.
+            Let's get you safely back home.
+        </p>
+
+        <a href="/"
+            class="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-2xl transition duration-300 hover:scale-110 animate-pulse">
+
+            🏠 Back to Home
+
+        </a>
+
+    </div>
+
+</body>
+</html>

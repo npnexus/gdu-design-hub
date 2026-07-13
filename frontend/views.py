@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
+def custom_404(request, exception):
+    return render(request, "404.html", status=404)
+
 # Create your views here.
 def home_views(request):
     return render(request,'index.html')
